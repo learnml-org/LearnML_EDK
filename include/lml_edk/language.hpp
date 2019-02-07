@@ -1,10 +1,10 @@
 #pragma once
 
+#include <lml_pae/string.hpp>
+
 #include <map>
 #include <optional>
-#include <string>
 #include <utility>
-#include <Windows.h>
 
 namespace lml_edk
 {
@@ -17,8 +17,8 @@ namespace lml_edk
 	class description final
 	{
 	public:
-		description(const std::basic_string<TCHAR>& text);
-		description(const std::basic_string<TCHAR>& title, const std::basic_string<TCHAR>& text);
+		description(const lml_pae::string& text);
+		description(const lml_pae::string& title, const lml_pae::string& text);
 		description(const description& description);
 		description(description&& description) noexcept;
 		~description() = default;
@@ -28,13 +28,13 @@ namespace lml_edk
 		description& operator=(description&& description) noexcept;
 
 	public:
-		std::basic_string<TCHAR> title;
-		std::basic_string<TCHAR> text;
+		lml_pae::string title;
+		lml_pae::string text;
 	};
 
-	using global_string = std::map<language, std::basic_string<TCHAR>>;
+	using global_string = std::map<language, lml_pae::string>;
 	using global_description = std::map<language, description>;
 
-	std::optional<std::basic_string<TCHAR>> get_string(const global_string& string, language language) noexcept;
+	std::optional<lml_pae::string> get_string(const global_string& string, language language) noexcept;
 	std::optional<description> get_string(const global_description& string, language language) noexcept;
 }

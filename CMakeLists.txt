@@ -11,10 +11,13 @@ set(SOURCE_DIR "./src")
 set(OUTPUT_DIR "./bin")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIR})
 
-include_directories(${INCLUDE_DIR})
+include_directories(${INCLUDE_DIR} ./mod/lml_le/include ./mod/lml_le/mod/lml_pae/include)
 file(GLOB_RECURSE SOURCE_LIST ${SOURCE_DIR}/*.cpp)
 
 add_library(${PROJECT_NAME} STATIC ${SOURCE_LIST})
+
+add_subdirectory(./mod/lml_le)
+target_link_libraries(${PROJECT_NAME} LearnML_LE)
 
 install(DIRECTORY ${INCLUDE_DIR}/lml_edk DESTINATION include)
 install(TARGETS ${PROJECT_NAME} DESTINATION lib)

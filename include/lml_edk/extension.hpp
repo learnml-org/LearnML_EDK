@@ -2,15 +2,23 @@
 
 #include <lml_edk/function.hpp>
 #include <lml_edk/language.hpp>
+#include <lml_le/log.hpp>
+#include <lml_pae/string.hpp>
 
 #include <cstdint>
 #include <memory>
-#include <Windows.h>
+
+namespace lml
+{
+	class extension_engine;
+}
 
 namespace lml_edk
 {
 	class extension_base
 	{
+		friend class lml::extension_engine;
+
 	public:
 		extension_base(const extension_base&) = delete;
 		virtual ~extension_base() = default;
@@ -23,10 +31,16 @@ namespace lml_edk
 
 	public:
 		virtual global_string name() const = 0;
-		virtual std::basic_string<TCHAR> developer() const = 0;
-		virtual std::basic_string<TCHAR> display_version() const = 0;
+		virtual lml_pae::string developer() const = 0;
+		virtual lml_pae::string display_version() const = 0;
 		virtual std::uint64_t version() const noexcept = 0;
 		virtual const function_table& functions() const = 0;
+
+	protected:
+		lml_le::logger& logger() noexcept;
+
+	private:
+		lml_le::logger* logger_;
 	};
 
 	using extension_base_ptr = std::shared_ptr<extension_base>;

@@ -2,6 +2,14 @@
 
 namespace lml_edk
 {
+	lml_le::logger& extension_base::logger() noexcept
+	{
+		return *logger_;
+	}
+}
+
+namespace lml_edk
+{
 	inline namespace v1_0_0
 	{
 		const function_table& extension::functions() const

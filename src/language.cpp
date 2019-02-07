@@ -2,10 +2,10 @@
 
 namespace lml_edk
 {
-	description::description(const std::basic_string<TCHAR>& text)
+	description::description(const lml_pae::string& text)
 		: text(text)
 	{}
-	description::description(const std::basic_string<TCHAR>& title, const std::basic_string<TCHAR>& text)
+	description::description(const lml_pae::string& title, const lml_pae::string& text)
 		: title(title), text(text)
 	{}
 	description::description(const description& description)
@@ -31,7 +31,7 @@ namespace lml_edk
 
 namespace lml_edk
 {
-	std::optional<std::basic_string<TCHAR>> get_string(const global_string& string, language language) noexcept
+	std::optional<lml_pae::string> get_string(const global_string& string, language language) noexcept
 	{
 		if (auto iter = string.find(language); iter != string.end()) return iter->second;
 		else return std::nullopt;

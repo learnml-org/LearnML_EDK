@@ -1,0 +1,3 @@
+[submodule "mod/lml_le"]
+	path = mod/lml_le
+	url = https://github.com/learnml-org/LearnML_LE.git
