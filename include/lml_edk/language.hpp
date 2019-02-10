@@ -2,9 +2,7 @@
 
 #include <lml_pae/string.hpp>
 
-#include <map>
-#include <optional>
-#include <utility>
+#include <vector>
 
 namespace lml_edk
 {
@@ -14,27 +12,23 @@ namespace lml_edk
 		en, eng = en,
 	};
 
-	class description final
+	class paragraph final
 	{
 	public:
-		description(const lml_pae::string& text);
-		description(const lml_pae::string& title, const lml_pae::string& text);
-		description(const description& description);
-		description(description&& description) noexcept;
-		~description() = default;
+		paragraph(const lml_pae::string& text);
+		paragraph(const lml_pae::string& title, const lml_pae::string& text);
+		paragraph(const paragraph& paragraph);
+		paragraph(paragraph&& paragraph) noexcept;
+		~paragraph() = default;
 
 	public:
-		description& operator=(const description& description);
-		description& operator=(description&& description) noexcept;
+		paragraph& operator=(const paragraph& paragraph);
+		paragraph& operator=(paragraph&& paragraph) noexcept;
 
 	public:
 		lml_pae::string title;
 		lml_pae::string text;
 	};
 
-	using global_string = std::map<language, lml_pae::string>;
-	using global_description = std::map<language, description>;
-
-	std::optional<lml_pae::string> get_string(const global_string& string, language language) noexcept;
-	std::optional<description> get_string(const global_description& string, language language) noexcept;
+	using description = std::vector<paragraph>;
 }

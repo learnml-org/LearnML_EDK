@@ -6,11 +6,11 @@ namespace lml_edk
 	{
 		return allocate({})->id();
 	}
-	global_string layer_allocator::name() const
+	lml_pae::string layer_allocator::name() const
 	{
 		return allocate({})->name();
 	}
-	global_description layer_allocator::description() const
+	description layer_allocator::description() const
 	{
 		return allocate({})->description();
 	}

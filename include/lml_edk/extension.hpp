@@ -30,7 +30,7 @@ namespace lml_edk
 		extension_base& operator=(const extension_base&) = delete;
 
 	public:
-		virtual global_string name() const = 0;
+		virtual lml_pae::string name() const = 0;
 		virtual lml_pae::string developer() const = 0;
 		virtual lml_pae::string display_version() const = 0;
 		virtual std::uint64_t version() const noexcept = 0;
@@ -69,6 +69,10 @@ namespace lml_edk
 			// Parameter: Nothing
 			// Result: no_return_t
 			virtual function_result disabled(function_parameter arg) = 0;
+			// Parameter:
+			// - language: language
+			// Result: language
+			virtual function_result change_language(function_parameter arg) = 0;
 
 			// Parameter: Nothing
 			// Result: std::vector<layer_allocator_ptr>

@@ -34,11 +34,11 @@ namespace lml_edk
 
 	public:
 		virtual std::shared_ptr<layer_base> allocate(function_parameter arg) const = 0;
-		virtual const std::vector<std::tuple<std::string, type, global_string, bool>>& constructor_parameters() const = 0;
+		virtual const std::vector<std::tuple<std::string, type, lml_pae::string, bool>>& constructor_parameters() const = 0;
 
 		virtual std::uint32_t id() const;
-		virtual global_string name() const;
-		virtual global_description description() const;
+		virtual lml_pae::string name() const;
+		virtual description description() const;
 	};
 
 	using layer_allocator_ptr = std::shared_ptr<const layer_allocator>;
@@ -57,8 +57,8 @@ namespace lml_edk
 
 	public:
 		virtual std::uint32_t id() const noexcept = 0;
-		virtual global_string name() const = 0;
-		virtual global_description description() const = 0;
+		virtual lml_pae::string name() const = 0;
+		virtual description description() const = 0;
 		virtual const function_table& functions() const = 0;
 		virtual layer_allocator_ptr allocator() const = 0;
 	};

@@ -9,5 +9,6 @@ namespace lml_edk
 		uint64,
 		string,
 		matrix,
+		language,
 	};
 }

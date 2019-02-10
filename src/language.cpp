@@ -2,43 +2,29 @@
 
 namespace lml_edk
 {
-	description::description(const lml_pae::string& text)
+	paragraph::paragraph(const lml_pae::string& text)
 		: text(text)
 	{}
-	description::description(const lml_pae::string& title, const lml_pae::string& text)
+	paragraph::paragraph(const lml_pae::string& title, const lml_pae::string& text)
 		: title(title), text(text)
 	{}
-	description::description(const description& description)
-		: title(description.title), text(description.text)
+	paragraph::paragraph(const paragraph& paragraph)
+		: title(paragraph.title), text(paragraph.text)
 	{}
-	description::description(description&& description) noexcept
-		: title(std::move(description.title)), text(std::move(description.text))
+	paragraph::paragraph(paragraph&& paragraph) noexcept
+		: title(std::move(paragraph.title)), text(std::move(paragraph.text))
 	{}
 
-	description& description::operator=(const description& description)
+	paragraph& paragraph::operator=(const paragraph& paragraph)
 	{
-		title = description.title;
-		text = description.text;
+		title = paragraph.title;
+		text = paragraph.text;
 		return *this;
 	}
-	description& description::operator=(description&& description) noexcept
+	paragraph& paragraph::operator=(paragraph&& paragraph) noexcept
 	{
-		title = std::move(description.title);
-		text = std::move(description.text);
+		title = std::move(paragraph.title);
+		text = std::move(paragraph.text);
 		return *this;
-	}
-}
-
-namespace lml_edk
-{
-	std::optional<lml_pae::string> get_string(const global_string& string, language language) noexcept
-	{
-		if (auto iter = string.find(language); iter != string.end()) return iter->second;
-		else return std::nullopt;
-	}
-	std::optional<description> get_string(const global_description& string, language language) noexcept
-	{
-		if (auto iter = string.find(language); iter != string.end()) return iter->second;
-		else return std::nullopt;
 	}
 }
