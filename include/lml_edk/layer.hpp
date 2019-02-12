@@ -32,7 +32,7 @@ namespace lml_edk
 		virtual std::shared_ptr<layer_base> allocate(function_parameter arg) const = 0;
 		virtual const std::vector<std::tuple<std::string, type, lml_pae::string, bool>>& constructor_parameters() const = 0;
 
-		virtual std::uint32_t id() const;
+		virtual std::uint64_t id() const;
 		virtual lml_pae::string name() const;
 		virtual description description() const;
 	};
@@ -52,7 +52,7 @@ namespace lml_edk
 		layer_base& operator=(const layer_base&) = delete;
 
 	public:
-		virtual std::uint32_t id() const noexcept = 0;
+		virtual std::uint64_t id() const noexcept = 0;
 		virtual lml_pae::string name() const = 0;
 		virtual description description() const = 0;
 		virtual const function_table& functions() const = 0;

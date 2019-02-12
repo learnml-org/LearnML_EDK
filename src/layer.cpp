@@ -2,7 +2,7 @@
 
 namespace lml_edk
 {
-	std::uint32_t layer_allocator::id() const
+	std::uint64_t layer_allocator::id() const
 	{
 		return allocate({})->id();
 	}
